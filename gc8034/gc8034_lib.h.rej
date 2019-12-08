@@ -1,0 +1,46 @@
+diff a/gc8034/gc8034_lib.h b/gc8034/gc8034_lib.h	(rejected hunks)
+@@ -578,6 +578,8 @@ uint8_t agc_register[2 * MAX_AG_INDEX][AGC_REG_NUM] = {
+   {0x04, 0x80, 0x00}, \
+   {0x11, 0x2b, 0x00}, \
+   {0x12, 0x40, 0x00}, \
++  {0x5d, 0x00, 0x00}, \
++  {0x5e, 0x00, 0x00}, \
+   {0x13, 0x06, 0x00}, \
+   {0x15, 0x10, 0x00}, \
+   {0x16, 0x29, 0x00}, \
+@@ -721,6 +723,8 @@ static sensor_lib_t sensor_lib_ptr =
+     .filter_arrangement = SENSOR_BGGR,
+ #else
+     .filter_arrangement = SENSOR_RGGB,
++	.filter_arrangement = SENSOR_RGGB,
++	.filter_arrangement = SENSOR_RGGB,
+ #endif
+   },
+   .output_reg_addr =
+@@ -933,6 +941,26 @@ static sensor_lib_t sensor_lib_ptr =
+         .addr_type = CAMERA_I2C_BYTE_ADDR,
+         .data_type = CAMERA_I2C_BYTE_DATA,
+         .delay = 0,
++		.mode = SENSOR_TEST_PATTERN_OFF,
++        .settings =
++        {
++          .reg_setting_a =
++          {
++            {0xfc, 0x00, 0x00},
++            {0xf7, 0x95, 0x00},
++            {0xfc, 0x00, 0x00},
++            {0xfc, 0xee, 0x00},
++            {0xfe, 0x03, 0x00},
++            {0x21, 0x05, 0x00},
++            {0x22, 0x06, 0x00},
++            {0x23, 0x2b, 0x00},
++            {0x26, 0x07, 0x00},
++            {0x29, 0x07, 0x00},
++            {0x2a, 0x12, 0x00},
++            {0x2b, 0x07, 0x00},
++            {0xfe, 0x00, 0x00},
++            {0x8c, 0x00, 0x00},
++          },
+       },
+ #endif
+       /* Res 2 */

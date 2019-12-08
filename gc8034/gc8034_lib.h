@@ -176,8 +176,7 @@ uint8_t agc_register[2 * MAX_AG_INDEX][AGC_REG_NUM] = {
   {0xd2, 0xc3, 0x00}, \
   {0xd8, 0x40, 0x00}, \
   {0xd9, 0xff, 0x00}, \
-  {0xda, 0x0e, 0x00}, \
-  {0xdb, 0xb0, 0x00}, \
+ 
   {0xdc, 0x0e, 0x00}, \
   {0xde, 0x08, 0x00}, \
   {0xe4, 0xc6, 0x00}, \
@@ -251,6 +250,8 @@ uint8_t agc_register[2 * MAX_AG_INDEX][AGC_REG_NUM] = {
   {0xfe, 0x01, 0x00}, \
   {0xbf, 0x40, 0x00}, \
   {0xfe, 0x01, 0x00}, \
+  {0x5d, 0x00, 0x00}, \
+  {0x5e, 0x00, 0x00}, \
   {0x68, 0x77, 0x00}, \
   {0xfe, 0x01, 0x00}, \
   {0x60, 0x00, 0x00}, \
@@ -315,8 +316,7 @@ uint8_t agc_register[2 * MAX_AG_INDEX][AGC_REG_NUM] = {
 { \
   {0xf2, 0x00, 0x00}, \
   {0xf4, 0x80, 0x00}, \
-  {0xf5, 0x19, 0x00}, \
-  {0xf6, 0x44, 0x00}, \
+ 
   {0xf8, 0x63, 0x00}, \
   {0xfa, 0x45, 0x00}, \
   {0xf9, 0x00, 0x00}, \
@@ -834,6 +834,10 @@ static sensor_lib_t sensor_lib_ptr =
     .addr_type = 0,
     .data_type = 0,
     .delay = 0,
+	 .reg_setting_a = GROUPOFF_REG_ARRAY,
+    .addr_type = CAMERA_I2C_BYTE_ADDR,
+    .data_type = CAMERA_I2C_BYTE_DATA,
+    .delay = 0,
   },
   .embedded_data_disable_settings =
   {
@@ -1018,7 +1022,7 @@ static sensor_lib_t sensor_lib_ptr =
         .binning_factor = 1,
         .min_fps = 8.0,
         .max_fps = 60.0,
-        .mode = SENSOR_HFR_MODE,
+        mode = SENSOR_HFR_MODE,
         .offset_x = 672,
         .offset_y = 684,
         .scale_factor = 1,
@@ -1101,7 +1105,7 @@ static sensor_lib_t sensor_lib_ptr =
         {
           {
             .cid = 0,
-            .dt = CSI_RAW10,
+            dt = CSI_RAW10,
             .decode_format = CSI_DECODE_10BIT
           },
         },
@@ -1185,8 +1189,7 @@ static sensor_lib_t sensor_lib_ptr =
   },
   .adc_readout_time = 0,
   .app_delay = {
-    [SENSOR_DELAY_EXPOSURE] = 0,
-    [SENSOR_DELAY_ANALOG_SENSOR_GAIN] = 0,
+   
     [SENSOR_DELAY_DIGITAL_SENSOR_GAIN] = 0,
   },
   .noise_coeff = {
